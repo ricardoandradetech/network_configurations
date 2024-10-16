@@ -1,0 +1,27 @@
+#WE HAVE TO CREATE A LOCAL USERNAME & PASSWORD
+
+R1(config)# username changeit password changeit1
+
+
+
+#CREATE BBA-GROUP & VIRTUAL INTERFACE
+
+R1(config)# bba-gruop pppoe CHANGEITGROUP
+R1(config-bba-group)# virtual-template 1 
+R1(config-bba-group)# exit
+
+R1(config)# interface virtual-template 1
+R1(config-if)# ip address 10.10.10.1 255.255.255.0
+R1(config-if)# peer default ip address pool CHANGEITPOOL
+R1(config-if)# ppp authentication chap
+R1(config-if)# exit
+
+
+
+#CREATE THE ADDRESS RANGE POOL & ASSIGN IT TO PHISICAL INTERFACE
+
+R1(config)# ip local pool CHANGEITPOOL 10.10.10.2 10.10.10.254
+
+R1(config)# interface gi 0/0
+R1(config-if)# pppow enable group CHANGEITGROUP
+R1(config-if)# exit
