@@ -1,0 +1,12 @@
+#WHEN THEY ASK FOR DHCP_RESTART
+
+Network Brand:    Juniper
+Device:           Switch L3
+Model(s):         ex4300-48p, ex3400-48p, ex3300-48p
+Firmware:         Junos:21.2R3.8, 20.4R3.8, 12.3R12.4
+
+SW1> restart dhcp-service all-members immediatly 
+SW1> restart dhcp-service all-members gracefull
+
+-------------------------------------------------------
+##Quick question: Can I issue these commands in any order?
